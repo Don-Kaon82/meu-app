@@ -1,0 +1,28 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' # Mude para 'yarn' se usar Yarn
+
+      - name: Etapa 1: Instalação de dependências
+        run: npm install # Mude para 'yarn install' se usar Yarn
+
+      - name: Etapa 2: Testes automatizados
+        run: npm test -- --coverage
