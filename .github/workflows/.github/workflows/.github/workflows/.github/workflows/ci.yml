@@ -19,10 +19,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm' # Mude para 'yarn' se usar Yarn
+          cache: 'npm'
 
-      - name: Etapa 1: Instalação de dependências
-        run: npm install # Mude para 'yarn install' se usar Yarn
+      - name: "Etapa 1: Instalação de dependências"
+        run: npm install
 
-      - name: Etapa 2: Testes automatizados
+      - name: "Etapa 2: Testes automatizados"
         run: npm test -- --coverage
